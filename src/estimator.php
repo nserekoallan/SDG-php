@@ -1,6 +1,38 @@
 <?php
+include_once "impact.php";
+include_once "severeImpact.php";
 
 function covid19ImpactEstimator($data)
 {
+  $data = json_decode($data);
+
+  //normalise duration
+  $duration = 0;
+  switch($data->periodType){
+    case "days":
+      $duration = $data->timeToElapse;
+      break;
+    case "weeks":
+      $duration = $data->timeToElapse * 7;
+      break;
+    case "month":
+      $duration = $data->timeToElapse * 30;
+      break;
+    default:
+      echo "unknown period type";
+    }
+  //calculate impact
+  $impact = new Impact($data->reportedCases, $duration);
+
+  //calculate severe impact
+  $severeImpact = new SevereImpact($data->reportedCases, $duration);
+  // print_r($severeImpact);
+
+  //combine output
+  $output = [$data, $impact, $severeImpact];
+
+  $data = json_encode($output); 
+  var_dump($data);  
+  
   return $data;
 }
