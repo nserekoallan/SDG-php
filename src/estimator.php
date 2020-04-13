@@ -22,10 +22,10 @@ function covid19ImpactEstimator($data)
       echo "unknown period type";
     }
   //calculate impact
-  $impact = new Impact($data->reportedCases, $duration);
+  $impact = new Impact($data->reportedCases, $duration, $data->totalHospitalBeds, $data->region->avgDailyIncomeInUSD, $data->region->avgDailyIncomePopulation);
 
   //calculate severe impact
-  $severeImpact = new SevereImpact($data->reportedCases, $duration, $data->totalHospitalBeds);
+  $severeImpact = new SevereImpact($data->reportedCases, $duration, $data->totalHospitalBeds, $data->region->avgDailyIncomeInUSD, $data->region->avgDailyIncomePopulation);
   // print_r($severeImpact);
 
   //combine output
