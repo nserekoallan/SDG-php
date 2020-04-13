@@ -25,14 +25,13 @@ function covid19ImpactEstimator($data)
   $impact = new Impact($data->reportedCases, $duration);
 
   //calculate severe impact
-  $severeImpact = new SevereImpact($data->reportedCases, $duration);
+  $severeImpact = new SevereImpact($data->reportedCases, $duration, $data->totalHospitalBeds);
   // print_r($severeImpact);
 
   //combine output
   $output = [$data, $impact, $severeImpact];
 
-  $data = json_encode($output); 
-  var_dump($data);  
+  $data = json_encode($output);  
   
   return $data;
 }
