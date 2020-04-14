@@ -33,7 +33,7 @@ function covid19ImpactEstimator($data)
   //combine output
   $output = [$data, $impact, $severeImpact];
 
-  $data = json_encode($output);  
+  $data = $output;  
   
   return $data;
 }
