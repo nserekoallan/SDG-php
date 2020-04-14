@@ -4,7 +4,7 @@ include_once "severeImpact.php";
 
 function covid19ImpactEstimator($data)
 {
-  $data = json_decode($data);
+  // $data = json_decode($data);
 
   //normalise duration
   $duration = 0;
