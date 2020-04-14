@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^api/v1/on-covid-19/?$ api/handler.php
+RewriteRule ^api/v1/on-covid-19/json?$ api/handler.php
+RewriteRule ^api/v1/on-covid-19/xml?$ api/xmlhandler.php
